@@ -47,8 +47,9 @@ async function selfHosted() {
   const auth = { pin: created.pin, token: created.token };
 
   const players = await bots(created.pin);
-  await sleep(500);
+  for (let t = 0; t < 50 && view.playerCount !== N; t++) await sleep(100);
   assert.equal(view.playerCount, N, 'host lobby count');
+  console.log(`host lobby shows ${view.playerCount} players`);
 
   // Duplicate nicknames are rejected, case-insensitively.
   const dup = connect();
@@ -62,7 +63,9 @@ async function selfHosted() {
     const counts = view.counts.reduce((a, b) => a + b, 0);
     console.log(`Q${q + 1}: all ${counts}/${N} answered, revealed after ${Date.now() - t0}ms, counts=${view.counts}`);
     assert.equal(counts, N, 'every bot answered');
-    await sleep(300);
+    const tr = Date.now();
+    while (players.some((p) => p.states.at(-1).phase !== 'reveal') && Date.now() - tr < 10000) await sleep(20);
+    console.log(`    all phones got their result ${Date.now() - tr}ms after the host`);
     for (const p of players) {
       const r = p.states.at(-1);
       assert.equal(r.phase, 'reveal');
