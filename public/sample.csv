@@ -1,0 +1,7 @@
+question,option1,option2,option3,option4,answer,time
+What does ACM stand for?,Association for Computing Machinery,Advanced Computer Methods,American Coding Ministry,Applied Circuit Mechanics,1,20
+Which data structure works on LIFO?,Queue,Stack,Linked List,Tree,2,
+"What is the output of print(2 ** 3) in Python?",6,8,9,5,B,15
+HTTP is a stateless protocol.,True,False,,,1,10
+"Which of these is NOT a programming language: Rust, Go, or…",Kotlin,Swift,HTML,Haskell,C,
+Time complexity of binary search?,O(n),O(log n),O(n log n),O(1),2,20

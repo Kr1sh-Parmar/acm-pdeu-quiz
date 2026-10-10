@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Host · ACM PDEU QUIZ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="stage">
+    <div class="topbar">
+      <div class="brand">ACM PDEU <span>QUIZ</span></div>
+      <div class="right" id="bar"></div>
+    </div>
+
+    <!-- Step 1: upload CSV + settings -->
+    <section class="setup" id="setup">
+      <label class="drop" id="drop">
+        <input type="file" id="file" accept=".csv,text/csv" hidden>
+        <strong>Drop your quiz .csv here</strong>
+        <span class="muted">or click to choose a file</span>
+        <span class="muted" style="font-size:.85rem">Columns: question, option1, option2, option3, option4, answer (1–4 or A–D), time (optional, seconds)</span>
+      </label>
+
+      <div class="card settings">
+        <label>Time per question
+          <select id="time">
+            <option value="5">5 seconds</option>
+            <option value="10">10 seconds</option>
+            <option value="20" selected>20 seconds</option>
+            <option value="30">30 seconds</option>
+            <option value="60">60 seconds</option>
+            <option value="90">90 seconds</option>
+            <option value="120">120 seconds</option>
+          </select>
+        </label>
+        <label class="toggle"><input type="checkbox" id="shuffle"> Shuffle questions</label>
+        <label class="toggle"><input type="checkbox" id="showOnPhone"> Show question on phones</label>
+        <label class="toggle"><input type="checkbox" id="autoAdvance"> Auto-advance</label>
+      </div>
+
+      <div id="summary" class="muted"></div>
+      <div class="error" id="setupError"></div>
+      <div class="preview hidden" id="preview"></div>
+
+      <div class="row-actions">
+        <a class="btn ghost" href="/sample.csv" download>Download sample CSV</a>
+        <button class="btn primary lg" id="create" disabled>Create game →</button>
+      </div>
+    </section>
+
+    <!-- Live game views are rendered here -->
+    <div id="view" class="hidden" style="flex:1;display:flex;flex-direction:column;gap:20px"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/common.js"></script>
+  <script src="/host.js"></script>
+</body>
+</html>

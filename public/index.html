@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ACM PDEU QUIZ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="landing">
+    <div class="wrap">
+      <div class="brand big">ACM PDEU <span>QUIZ</span></div>
+      <p class="tag">Live quizzes for workshops.</p>
+      <form action="/play" method="get">
+        <input class="pin-input" type="text" name="pin" inputmode="numeric" pattern="\d{6}" maxlength="6" placeholder="Game PIN" required autocomplete="off" aria-label="Game PIN">
+        <button class="btn primary lg">Join</button>
+      </form>
+      <div class="divider">or</div>
+      <a class="btn ghost" href="/host">Host a quiz</a>
+    </div>
+  </div>
+</body>
+</html>
